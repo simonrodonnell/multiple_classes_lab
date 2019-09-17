@@ -8,6 +8,7 @@ class TestBus < Minitest::Test
   def setup
     @bus1 = Bus.new(23, "Portobello")
     @passenger1 = Person.new("Geoffrey", 37)
+    @passenger2 = Person.new("Hodor", 45)
   end
 
   def test_get_route_number
@@ -30,4 +31,19 @@ class TestBus < Minitest::Test
     @bus1.add_passenger(@passenger1)
     assert_equal(1, @bus1.passenger_count())
   end
+
+  def test_remove_passengers_from_bus
+    @bus1.add_passenger(@passenger1)
+    @bus1.add_passenger(@passenger2)
+    @bus1.remove_passenger(@passenger1)
+    assert_equal(1, @bus1.passenger_count())
+  end
+
+  def test_remove_all_passengers
+    @bus1.add_passenger(@passenger1)
+    @bus1.add_passenger(@passenger2)
+    @bus1.empty_bus()
+    assert_equal(0, @bus1.passenger_count())
+  end
+
 end
