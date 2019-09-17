@@ -12,4 +12,12 @@ class Bus
     return "Spicy Brum Brum"
   end
 
+  def passenger_count()
+    return @passengers.length() # or .count() / .size()
+  end
+
+  def add_passenger(new_passenger)
+    @passengers.push(new_passenger)
+  end
+
 end
