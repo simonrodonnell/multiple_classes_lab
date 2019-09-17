@@ -17,7 +17,7 @@ class Bus
   end
 
   def add_passenger(new_passenger)
-    @passengers.push(new_passenger)
+      @passengers.push(new_passenger)
   end
 
   def remove_passenger(passenger)
@@ -26,6 +26,17 @@ class Bus
 
   def empty_bus()
     @passengers = []
+  end
+
+  def add_queue(queue)
+    for passenger in queue
+      add_passenger(passenger)
+    end
+  end
+
+  def pick_up_from_stop(stop)
+    add_queue(stop.get_passengers_in_queue())
+    stop.empty_queue()
   end
 
 end
